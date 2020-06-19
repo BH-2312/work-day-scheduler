@@ -74,3 +74,7 @@ td {
 textarea{
   width:20cm;
 }
+.fa-lock {
+  margin: 15px;
+  padding: 5px;
+}

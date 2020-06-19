@@ -1,7 +1,6 @@
 var currentDay = document.getElementById("currentDay");
 currentDay.innerHTML = moment().format("MMM Do YYYY");
 var hour = document.getElementById("hour");
-var nineAM = document.getElementById("9AM");
 //$("currentDay").text = moment().format("MMM Do YYYY");
 //var currentHour = document.getElementById("test");
 //currentHour.innerHTML = moment().format('H');
@@ -9,17 +8,19 @@ var hourString = moment().format('H');
 //var correctHour = new Date().getHours();
 //var hourString = JSON.stringify(hourObject);
 var hourInteger = parseInt(hourString);
-
+var nine = document.getElementById("nineText").value;
 
 //console.log(parseInt(hourObject)===21);
 //console.log(correctHour)
-console.log(hour)
-console.log(typeof (hourString));
-console.log(hourString);
-console.log(typeof (hourInteger));
-console.log(hourInteger === 21);
+//multiple console.logs to test various things
+//console.log(hour)
+//console.log(typeof (hourString));
+//console.log(hourString);
+//console.log(typeof (hourInteger));
+//console.log(hourInteger === 21);
 
 //running of functions
+storage();
 nineAm();
 tenAm();
 elevenAm();
@@ -31,8 +32,25 @@ fourPm();
 fivePm();
 
 
+function storage(){
+    var nineStorage = localStorage.getItem('9AM');
+}
 //functions to determine correct hour and correct colour of scheduler
 function nineAm() {
+    //set local storage
+    $( "#9lock" ).click(function() {
+        var nine = document.getElementById("nineText").value;
+        //var nineJson = JSON.stringify(nine)
+        //console.log(typeof(nine))
+        //console.log(typeof(nineJson))
+        //console.log(nineJson)
+        localStorage.setItem('9AM', nine);
+        //var nineStorage = localStorage.getItem('9AM');
+        // Retrieve
+        //document.getElementById("result").innerHTML = localStorage.getItem("lastname"); 
+      });
+    // Store
+    //if statement
     if (hourInteger === 9) {
         $("#9AM").addClass("present");
     }
@@ -117,7 +135,7 @@ function fourPm() {
         $("#4PM").addClass("future");
     }
     if (hourInteger > 16) {
-        $("42PM").addClass("past");
+        $("#4PM").addClass("past");
     }
 }
 function fivePm() {
